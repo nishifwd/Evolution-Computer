@@ -11,7 +11,7 @@ import random
 POP_SIZE = 500
 
 #MUT_RATE: Rate at which our string will be changed.
-MUT_RATE = 0.2
+MUT_RATE = st.text_input("Enter your mutation",'0.0')
 
 #TARGET: Our goal.
 TARGET = 'danish'
