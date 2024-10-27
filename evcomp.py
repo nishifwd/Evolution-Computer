@@ -134,5 +134,3 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
 if st.button("Calculate"):
     main(POP_SIZE, MUT_RATE, TARGET, GENES)
 
-result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
-
