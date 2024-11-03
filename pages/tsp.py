@@ -9,7 +9,7 @@ import seaborn as sns
 import streamlit as st
 
 # Input for coordinates and city names
-cities_names = st.text_area("Enter city names *comma separated*", "Gliwice, Cairo, Rome, Krakow, Paris, Alexandria, Berlin, Tokyo, Rio, Budapest")
+cities_names = st.text_area("Enter city names *comma separated", "Gliwice, Cairo, Rome, Krakow, Paris, Alexandria, Berlin, Tokyo, Rio, Budapest")
 
 # Convert input to lists
 x = [0,3,6,7,15,10,16,5,8,1.5]
