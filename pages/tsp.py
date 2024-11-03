@@ -18,6 +18,12 @@ cities_names = [name.strip() for name in cities_names.split(",")]
 x = [float(val) for val in x_input.split(",")]
 y = [float(val) for val in y_input.split(",")]
 
+#State Icons
+available_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝", "♞", "♟", "★", "✿", "☀", "♠", "♥", "♦", "♣"]
+
+# City Icons
+city_icons = {city: random.choice(available_icons) for city in cities_names}
+
 city_coords = dict(zip(cities_names, zip(x, y)))  
 n_population = 250
 crossover_per = 0.8
@@ -26,20 +32,6 @@ n_generations = 200
 
 # Pastel Pallete   #try to plot the coordinate cities
 colors = sns.color_palette("pastel", len(cities_names))
-
-# City Icons
-city_icons = {
-    "Gliwice": "♕",
-    "Cairo": "♖",
-    "Rome": "♗",
-    "Krakow": "♘",
-    "Paris": "♙",
-    "Alexandria": "♔",
-    "Berlin": "♚",
-    "Tokyo": "♛",
-    "Rio": "♜",
-    "Budapest": "♝"
-}
 
 fig, ax = plt.subplots()
 
