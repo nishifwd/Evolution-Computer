@@ -20,7 +20,12 @@ cities_names = [name.strip() for name in cities_names.split(",")]
 available_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝", "♞", "♟", "★", "✿", "☀", "♠", "♥", "♦", "♣"]
 
 # City Icons
-city_icons = {city: random.choice(available_icons) for city in cities_names}
+if len(available_icons) < len(cities_names):
+    st.error("Not enough unique icons for each city. Please add more icons to the list.")
+else:
+    # Shuffle icons and assign one unique icon to each city
+    random.shuffle(available_icons)
+    city_icons = dict(zip(cities_names, available_icons[:len(cities_names)]))
 
 city_coords = dict(zip(cities_names, zip(x, y)))  
 n_population = 250
