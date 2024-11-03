@@ -10,13 +10,11 @@ import streamlit as st
 
 # Input for coordinates and city names
 cities_names = st.text_area("Enter city names (comma separated)", "Gliwice, Cairo, Rome, Krakow, Paris, Alexandria, Berlin, Tokyo, Rio, Budapest")
-x_input = st.text_area("Enter x-coordinates for each city (comma separated)", "0,3,6,7,15,10,16,5,8,1.5")
-y_input = st.text_area("Enter y-coordinates for each city (comma separated)", "1,2,1,4.5,-1,2.5,11,6,9,12")
 
 # Convert input to lists
+x = [0,3,6,7,15,10,16,5,8,1.5]
+y = [1,2,1,4.5,-1,2.5,11,6,9,12]
 cities_names = [name.strip() for name in cities_names.split(",")]
-x = [float(val) for val in x_input.split(",")]
-y = [float(val) for val in y_input.split(",")]
 
 #State Icons
 available_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝", "♞", "♟", "★", "✿", "☀", "♠", "♥", "♦", "♣"]
