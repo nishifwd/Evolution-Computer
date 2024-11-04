@@ -1,84 +1,70 @@
 import matplotlib.pyplot as plt
-from itertools import permutations, combinations
-from random import shuffle
 import random
 import numpy as np
-import statistics
 import pandas as pd
 import seaborn as sns
 import streamlit as st
+from itertools import permutations
 
+# Title for the app
+st.title("Traveling Salesman Problem Visualization with GA")
 
-st.title("City Coordinates Input")
-st.write("Enter up to 10 cities with their coordinates (x, y) in range 1-10.")
+# User input for city data
+st.subheader("Input City Coordinates")
 
-# Dictionary to hold city coordinates
-cities = {}
+# Creating input columns for city name, x-coordinates, and y-coordinates
+num_cities = st.number_input("Number of cities to input:", min_value=3, max_value=20, value=10)
+city_names = []
+city_x_coords = []
+city_y_coords = []
 
-# List of icons for cities based on their order
-city_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝"]
+st.write("Enter the details for each city:")
+columns = st.columns(3)
+for i in range(num_cities):
+    with columns[0]:
+        city_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
+        city_names.append(city_name)
+    with columns[1]:
+        city_x = st.number_input(f"City {i+1} X-coordinate:", value=float(i * 2), key=f"x{i}")
+        city_x_coords.append(city_x)
+    with columns[2]:
+        city_y = st.number_input(f"City {i+1} Y-coordinate:", value=float(i), key=f"y{i}")
+        city_y_coords.append(city_y)
 
-# Allow input for up to 10 cities
-for i in range(1, 11):
-    col1, col2 = st.columns(3)
-    with col1:
-    city_name = st.text_input(f"City {i}", key=f"city_{i}")
-    with col2:
-        x_coordinate = st.number_input(f"x-coordinate (City {i})", 1, 10, step=1, key=f"x_{i}")
-    with col3:
-        y_coordinate = st.number_input(f"y-coordinate (City {i})", 1, 10, step=1, key=f"y_{i}")
-    
-    if city_name:
-        cities[city_name] = {
-            "coords": (x_coordinate, y_coordinate),
-            "icon": city_icons[i - 1]  # Assign icon based on order
-        }
+# Constructing city coordinates dictionary
+city_coords = dict(zip(city_names, zip(city_x_coords, city_y_coords)))
 
-# Submit button
-if st.button("Submit"):
-    if cities:
-        st.write("City Coordinates with Icons:")
-        for city, data in cities.items():
-            st.write(f"{data['icon']} {city}: {data['coords']}")
-    else:
-        st.warning("Please enter at least one city with coordinates.")
-
-# Extracting city names, x, and y coordinates from the cities dictionary
-cities_names = list(cities.keys())
-x, y = zip(*[data['coords'] for data in cities.values()]) if cities else ([], [])
-
-# Create a dictionary of city coordinates if cities are provided
-if cities:
-    city_coords = dict(zip(cities_names, zip(x, y)))
-
-# Parameters for genetic algorithm
+# GA parameters
 n_population = 250
 crossover_per = 0.8
 mutation_per = 0.2
 n_generations = 200
 
-# Pastel palette for visualization
-colors = sns.color_palette("pastel", len(cities_names))
+# Visualization colors and icons
+colors = sns.color_palette("pastel", len(city_names))
+city_icons = {city: f"♕" for city in city_names}  # Simple placeholder icon for visualization
 
+# Plotting the cities
 fig, ax = plt.subplots()
-
-ax.grid(False)  # Grid
+ax.grid(False)
 
 for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
-    color = colors[i]
+    color = colors[i % len(colors)]
     icon = city_icons[city]
     ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
     ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
     ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
                 textcoords='offset points')
 
-    # Connect cities with opaque lines
     for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
         if i != j:
             ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
 
 fig.set_size_inches(16, 12)
 st.pyplot(fig)
+
+# Your existing functions for TSP, GA logic, and final visualization remain the same...
+
 
 #population
 def initial_population(cities_list, n_population = 250):
