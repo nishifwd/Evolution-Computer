@@ -6,8 +6,6 @@ import seaborn as sns
 import streamlit as st
 from itertools import permutations
 
-# Title for the app
-st.title("Traveling Salesman Problem Visualization with GA")
 # Setting a fixed number of cities to 9
 num_cities = 9
 # Collecting city names and coordinates
