@@ -6,10 +6,20 @@ import seaborn as sns
 import streamlit as st
 from itertools import permutations
 
-# Creating input columns for city name, x-coordinates, and y-coordinates
-city_names = [10]
-city_x_coords = [10]
-city_y_coords = [10]
+# Title for the app
+st.title("Traveling Salesman Problem Visualization with GA")
+
+# User input for city data
+st.subheader("Input City Coordinates")
+
+# Setting a fixed number of cities to 9
+num_cities = 9
+st.write(f"The number of cities is fixed at {num_cities}.")
+
+# Collecting city names and coordinates
+city_names = []
+city_x_coords = []
+city_y_coords = []
 
 st.write("Enter the details for each city:")
 columns = st.columns(3)
@@ -55,9 +65,6 @@ for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
 
 fig.set_size_inches(16, 12)
 st.pyplot(fig)
-
-# Your existing functions for TSP, GA logic, and final visualization remain the same...
-
 
 #population
 def initial_population(cities_list, n_population = 250):
