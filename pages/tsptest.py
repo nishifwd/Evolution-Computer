@@ -28,10 +28,10 @@ for i in range(num_cities):
         city_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
         city_names.append(city_name)
     with columns[1]:
-        city_x = st.number_input(f"City {i+1} X-coordinate:", value=float(i * 2), key=f"x{i}")
+        city_x = st.number_input(f"City {i+1} X-coordinate:", value=int(i * 2), key=f"x{i}")
         city_x_coords.append(city_x)
     with columns[2]:
-        city_y = st.number_input(f"City {i+1} Y-coordinate:", value=float(i), key=f"y{i}")
+        city_y = st.number_input(f"City {i+1} Y-coordinate:", value=int(i), key=f"y{i}")
         city_y_coords.append(city_y)
 
 # Constructing city coordinates dictionary
