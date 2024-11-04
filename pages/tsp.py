@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from itertools import permutations, combinations #library to run the code
+from itertools import permutations, combinations
 from random import shuffle
 import random
 import numpy as np
@@ -8,33 +8,31 @@ import pandas as pd
 import seaborn as sns
 import streamlit as st
 
-# Input for coordinates and city names
-cities_names = st.text_area("Enter city names *comma separated", "Gliwice, Cairo, Rome, Krakow, Paris, Alexandria, Berlin, Tokyo, Rio, Budapest")
-
-# Convert input to lists
 x = [0,3,6,7,15,10,16,5,8,1.5]
 y = [1,2,1,4.5,-1,2.5,11,6,9,12]
-cities_names = [name.strip() for name in cities_names.split(",")]
-
-#State Icons
-available_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝", "♞", "♟", "★", "✿", "☀", "♠", "♥", "♦", "♣"]
-
-# City Icons
-if len(available_icons) < len(cities_names):
-    st.error("Not enough unique icons for each city. Please add more icons to the list.")
-else:
-    # Shuffle icons and assign one unique icon to each city
-    random.shuffle(available_icons)
-    city_icons = dict(zip(cities_names, available_icons[:len(cities_names)]))
-
-city_coords = dict(zip(cities_names, zip(x, y)))  
+cities_names = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
+city_coords = dict(zip(cities_names, zip(x, y)))
 n_population = 250
 crossover_per = 0.8
 mutation_per = 0.2
 n_generations = 200
 
-# Pastel Pallete   #try to plot the coordinate cities
+# Pastel Pallete
 colors = sns.color_palette("pastel", len(cities_names))
+
+# City Icons
+city_icons = {
+    "Gliwice": "♕",
+    "Cairo": "♖",
+    "Rome": "♗",
+    "Krakow": "♘",
+    "Paris": "♙",
+    "Alexandria": "♔",
+    "Berlin": "♚",
+    "Tokyo": "♛",
+    "Rio": "♜",
+    "Budapest": "♝"
+}
 
 fig, ax = plt.subplots()
 
@@ -277,7 +275,7 @@ st.write(minimum_distance)
 #shortest path
 # shortest_path = offspring_list[index_minimum]
 shortest_path = best_mixed_offspring[index_minimum]
-st.write('Shortest Path = ', shortest_path)
+st.write(shortest_path)
 
 x_shortest = []
 y_shortest = []
