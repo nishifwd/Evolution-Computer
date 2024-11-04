@@ -11,7 +11,7 @@ st.title("Traveling Salesman Problem Visualization with GA")
 # Setting a fixed number of cities to 9
 num_cities = 9
 # Collecting city names and coordinates
-city_names = []
+cities_names = []
 x = []
 y = []
 
@@ -19,8 +19,8 @@ st.write("Enter the details for each city:")
 columns = st.columns(3)
 for i in range(num_cities):
     with columns[0]:
-        city_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
-        city_names.append(city_name)
+        cities_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
+        cities_names.append(city_name)
     with columns[1]:
         city_x = st.number_input(f"City {i+1} X-coordinate:", value=int(i * 2), key=f"x{i}")
         x.append(city_x)
@@ -38,8 +38,8 @@ mutation_per = 0.2
 n_generations = 200
 
 # Visualization colors and icons
-colors = sns.color_palette("pastel", len(city_names))
-city_icons = {city: f"♕" for city in city_names}  # Simple placeholder icon for visualization
+colors = sns.color_palette("pastel", len(cities_names))
+city_icons = {city: f"♕" for city in cities_names}  # Simple placeholder icon for visualization
 
 # Plotting the cities
 fig, ax = plt.subplots()
