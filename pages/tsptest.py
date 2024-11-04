@@ -7,9 +7,9 @@ import streamlit as st
 from itertools import permutations
 
 # Creating input columns for city name, x-coordinates, and y-coordinates
-city_names = []
-city_x_coords = []
-city_y_coords = []
+city_names = [10]
+city_x_coords = [10]
+city_y_coords = [10]
 
 st.write("Enter the details for each city:")
 columns = st.columns(3)
