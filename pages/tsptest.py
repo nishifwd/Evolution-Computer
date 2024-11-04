@@ -29,7 +29,7 @@ for i in range(num_cities):
         y.append(city_y)
 
 # Constructing city coordinates dictionary
-city_coords = dict(zip(city_names, zip(x, y)))
+city_coords = dict(zip(cities_names, zip(x, y)))
 
 # GA parameters
 n_population = 250
