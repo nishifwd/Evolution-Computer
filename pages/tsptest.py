@@ -20,11 +20,12 @@ city_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "�
 
 # Allow input for up to 10 cities
 for i in range(1, 11):
-    city_name = st.text_input(f"City {i}", key=f"city_{i}")
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(3)
     with col1:
-        x_coordinate = st.number_input(f"x-coordinate (City {i})", 1, 10, step=1, key=f"x_{i}")
+    city_name = st.text_input(f"City {i}", key=f"city_{i}")
     with col2:
+        x_coordinate = st.number_input(f"x-coordinate (City {i})", 1, 10, step=1, key=f"x_{i}")
+    with col3:
         y_coordinate = st.number_input(f"y-coordinate (City {i})", 1, 10, step=1, key=f"y_{i}")
     
     if city_name:
