@@ -20,7 +20,7 @@ columns = st.columns(3)
 for i in range(num_cities):
     with columns[0]:
         cities_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
-        cities_names.append(city_name)
+        cities_names.append(cities_name)
     with columns[1]:
         city_x = st.number_input(f"City {i+1} X-coordinate:", value=int(i * 2), key=f"x{i}")
         x.append(city_x)
