@@ -38,7 +38,7 @@ n_generations = 200
 # Visualization colors and icons
 colors = sns.color_palette("pastel", len(cities_names))
 city_icons = {city: f"♕" for city in cities_names}  # Simple placeholder icon for visualization
-
+    
 # Plotting the cities
 fig, ax = plt.subplots()
 ax.grid(False)
@@ -56,7 +56,10 @@ for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
             ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
 
 fig.set_size_inches(16, 12)
-st.pyplot(fig)
+
+if st.button("Submit"):
+    st.pyplot(fig)
+
 
 #population
 def initial_population(cities_list, n_population = 250):
