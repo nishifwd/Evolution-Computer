@@ -6,14 +6,7 @@ import seaborn as sns
 import streamlit as st
 from itertools import permutations
 
-# Title for the app
-st.title("Traveling Salesman Problem Visualization with GA")
-
-# User input for city data
-st.subheader("Input City Coordinates")
-
 # Creating input columns for city name, x-coordinates, and y-coordinates
-num_cities = st.number_input("Number of cities to input:", min_value=3, max_value=20, value=10)
 city_names = []
 city_x_coords = []
 city_y_coords = []
