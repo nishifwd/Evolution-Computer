@@ -8,18 +8,12 @@ from itertools import permutations
 
 # Title for the app
 st.title("Traveling Salesman Problem Visualization with GA")
-
-# User input for city data
-st.subheader("Input City Coordinates")
-
 # Setting a fixed number of cities to 9
 num_cities = 9
-st.write(f"The number of cities is fixed at {num_cities}.")
-
 # Collecting city names and coordinates
 city_names = []
-city_x_coords = []
-city_y_coords = []
+x = []
+y = []
 
 st.write("Enter the details for each city:")
 columns = st.columns(3)
@@ -35,7 +29,7 @@ for i in range(num_cities):
         city_y_coords.append(city_y)
 
 # Constructing city coordinates dictionary
-city_coords = dict(zip(city_names, zip(city_x_coords, city_y_coords)))
+city_coords = dict(zip(city_names, zip(x, y)))
 
 # GA parameters
 n_population = 250
