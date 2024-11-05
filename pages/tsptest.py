@@ -6,6 +6,7 @@ import seaborn as sns
 import streamlit as st
 from itertools import permutations
 
+st.title("City Coordinate Input")
 # Setting a fixed number of cities to 9
 num_cities = 9
 # Collecting city names and coordinates
