@@ -62,11 +62,6 @@ if all(cities_names) and all(x) and all(y):
         fig.set_size_inches(16, 12)
         st.pyplot(fig)
 
-        # Run the genetic algorithm and other logic here...
-        # (Include your existing genetic algorithm code below this line)
-
-
-
 #population
 def initial_population(cities_list, n_population = 250):
 
@@ -323,3 +318,5 @@ for i, txt in enumerate(shortest_path):
 fig.set_size_inches(16, 12)
 # plt.grid(color='k', linestyle='dotted')
 st.pyplot(fig)
+
+
