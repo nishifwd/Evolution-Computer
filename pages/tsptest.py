@@ -13,6 +13,7 @@ cities_names = []
 x = []
 y = []
 
+# Create input fields for city names and coordinates
 st.write("Enter the details for each city:")
 columns = st.columns(3)
 for i in range(num_cities):
@@ -26,26 +27,26 @@ for i in range(num_cities):
         city_y = st.number_input(f"City {i+1} Y-coordinate:", value=int(i), key=f"y{i}")
         y.append(city_y)
 
+# Display the "Submit" button only after input is complete
 if all(cities_names) and all(x) and all(y):
     if st.button("Submit"):
-
         # Constructing city coordinates dictionary
         city_coords = dict(zip(cities_names, zip(x, y)))
-        
+
         # GA parameters
         n_population = 250
         crossover_per = 0.8
         mutation_per = 0.2
         n_generations = 200
-        
+
         # Visualization colors and icons
         colors = sns.color_palette("pastel", len(cities_names))
         city_icons = {city: f"♕" for city in cities_names}  # Simple placeholder icon for visualization
-            
+        
         # Plotting the cities
         fig, ax = plt.subplots()
         ax.grid(False)
-        
+
         for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
             color = colors[i % len(colors)]
             icon = city_icons[city]
@@ -53,13 +54,17 @@ if all(cities_names) and all(x) and all(y):
             ax.annotate(icon, (city_x, city_y), fontsize=40, ha='center', va='center', zorder=3)
             ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom', xytext=(0, -30),
                         textcoords='offset points')
-        
+
             for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
                 if i != j:
                     ax.plot([city_x, other_x], [city_y, other_y], color='gray', linestyle='-', linewidth=1, alpha=0.1)
-        
+
         fig.set_size_inches(16, 12)
         st.pyplot(fig)
+
+        # Run the genetic algorithm and other logic here...
+        # (Include your existing genetic algorithm code below this line)
+
 
 
 #population
