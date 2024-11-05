@@ -19,13 +19,13 @@ st.write("Enter up to 10 cities with their coordinates (x,y) in range 1-10:")
 columns = st.columns(3)
 for i in range(num_cities):
     with columns[0]:
-        cities_name = st.text_input(f"City {i+1}:", value=f"City{i+1}")
+        cities_name = st.text_input(f"City {i+1}", value=f"City{i+1}")
         cities_names.append(cities_name)
     with columns[1]:
-        city_x = st.number_input(f"City {i+1} X-coordinate:", min_value=0, max_value=10, value=0, step=1)
+        city_x = st.number_input(f" x-coordinate (City {i+1})", min_value=0, max_value=10, value=0, step=1)
         x.append(city_x)
     with columns[2]:
-        city_y = st.number_input(f"City {i+1} Y-coordinate:", min_value=0, max_value=10, value=0, step=1)
+        city_y = st.number_input(f" y-coordinate (City {i+1})", min_value=0, max_value=10, value=0, step=1)
         y.append(city_y)
         
 city_coords = dict(zip(cities_names, zip(x, y)))
