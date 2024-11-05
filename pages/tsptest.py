@@ -13,6 +13,9 @@ cities_names = []
 x = []
 y = []
 
+# City Icons
+city_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝"]
+
 # Create input fields for city names and coordinates
 st.write("Enter the details for each city:")
 columns = st.columns(3)
@@ -37,7 +40,7 @@ n_generations = 200
 
 # Visualization colors and icons
 colors = sns.color_palette("pastel", len(cities_names))
-city_icons = {city: f"♕" for city in cities_names}  # Simple placeholder icon for visualization
+
         
 # Plotting the cities
 fig, ax = plt.subplots()
