@@ -28,7 +28,7 @@ for i in range(num_cities):
         y.append(city_y)
 
 # Display the "Submit" button only after input is complete
-if all(cities_names) and all(x) and all(y):
+if (cities_names) and (x) and (y):
     if st.button("Submit"):
         # Constructing city coordinates dictionary
         city_coords = dict(zip(cities_names, zip(x, y)))
