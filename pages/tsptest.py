@@ -30,7 +30,7 @@ for i in range(num_cities):
         
 city_coords = dict(zip(cities_names, zip(x, y)))
 # Assign each city a unique icon from the list
-city_icons = dict(zip(cities_names, ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜"]))
+city_icons = dict(zip(cities_names, ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜","♝"]))
 
 # GA parameters
 n_population = 250
