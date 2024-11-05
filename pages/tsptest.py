@@ -6,26 +6,26 @@ import seaborn as sns
 import streamlit as st
 from itertools import permutations
 
-st.title("City Coordinate Input")
+st.title("City Coordinates Input")
 # Setting a fixed number of cities to 9
-num_cities = 9
+num_cities = 10
 # Collecting city names and coordinates
 cities_names = []
 x = []
 y = []
 
 # Create input fields for city names and coordinates
-st.write("Enter the details for each city:")
+st.write("Enter up to 10 cities with their coordinates (x,y) in range 1-10:")
 columns = st.columns(3)
 for i in range(num_cities):
     with columns[0]:
-        cities_name = st.text_input(f"City {i+1} Name:", value=f"City{i+1}")
+        cities_name = st.text_input(f"City {i+1}:", value=f"City{i+1}")
         cities_names.append(cities_name)
     with columns[1]:
-        city_x = st.number_input(f"City {i+1} X-coordinate:", value=int(i * 2), key=f"x{i}")
+        city_x = st.number_input(f"City {i+1} X-coordinate:", min_value=0, max_value=10, value=0, step=1)
         x.append(city_x)
     with columns[2]:
-        city_y = st.number_input(f"City {i+1} Y-coordinate:", value=int(i), key=f"y{i}")
+        city_y = st.number_input(f"City {i+1} Y-coordinate:", min_value=0, max_value=10, value=0, step=1)
         y.append(city_y)
         
 city_coords = dict(zip(cities_names, zip(x, y)))
