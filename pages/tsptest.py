@@ -13,9 +13,6 @@ cities_names = []
 x = []
 y = []
 
-# City Icons
-city_icons = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝"]
-
 # Create input fields for city names and coordinates
 st.write("Enter the details for each city:")
 columns = st.columns(3)
@@ -31,6 +28,8 @@ for i in range(num_cities):
         y.append(city_y)
         
 city_coords = dict(zip(cities_names, zip(x, y)))
+# Assign each city a unique icon from the list
+city_icons = dict(zip(cities_names, ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜"]))
 
 # GA parameters
 n_population = 250
@@ -41,7 +40,6 @@ n_generations = 200
 # Visualization colors and icons
 colors = sns.color_palette("pastel", len(cities_names))
 
-        
 # Plotting the cities
 fig, ax = plt.subplots()
 ax.grid(False)
