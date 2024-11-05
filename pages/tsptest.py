@@ -167,6 +167,3 @@ if all(cities_names) and all(x) and all(y):
 
         fig.set_size_inches(16, 12)
         st.pyplot(fig)
-
-else:
-    st.write("Please complete all fields before submitting.")
