@@ -27,9 +27,6 @@ for i in range(num_cities):
         city_y = st.number_input(f"City {i+1} Y-coordinate:", value=int(i), key=f"y{i}")
         y.append(city_y)
 
-# Constructing city coordinates dictionary
-city_coords = dict(zip(cities_names, zip(x, y)))
-
 # GA parameters
 n_population = 250
 crossover_per = 0.8
