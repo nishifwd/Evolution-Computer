@@ -26,6 +26,8 @@ for i in range(num_cities):
     with columns[2]:
         city_y = st.number_input(f"City {i+1} Y-coordinate:", value=int(i), key=f"y{i}")
         y.append(city_y)
+        
+city_coords = dict(zip(cities_names, zip(x, y)))
 
 # GA parameters
 n_population = 250
@@ -312,8 +314,3 @@ for i, txt in enumerate(shortest_path):
 fig.set_size_inches(16, 12)
 # plt.grid(color='k', linestyle='dotted')
 st.pyplot(fig)
-
-if all(cities_names) and all(x) and all(y):
-    if st.button("Submit"):
-        # Constructing city coordinates dictionary
-        city_coords = dict(zip(cities_names, zip(x, y)))
