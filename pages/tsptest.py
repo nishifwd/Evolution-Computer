@@ -62,7 +62,7 @@ if (cities_names) and (x) and (y):
         fig.set_size_inches(16, 12)
         st.pyplot(fig)
 
-#population
+        #population
 def initial_population(cities_list, n_population = 250):
 
     """
