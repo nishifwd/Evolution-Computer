@@ -9,7 +9,7 @@ st.title("Ollama Chatbot")
 
 # Define a function to send a message to Ollama and get the response
 def get_ollama_response(message):
-    response = ollama.chat(model="benevolentjoker/havenmini", messages=[{"role": "user", "content": message}])
+    response = ollama.chat(model="llama3", messages=[{"role": "user", "content": message}])
     return response['text']
 
 # Create a chat interface
