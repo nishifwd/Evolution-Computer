@@ -156,8 +156,8 @@ st.write("### Final Optimal Schedule")
 schedule_data = []
 schedule_data.append(["Time", "Program"])
 
-for time_slot, program in enumerate(final_schedule):
-    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", program])
+for time_slot, program:
+    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", {program[final_schedule]}])
 
 st.table(schedule_data)
 
