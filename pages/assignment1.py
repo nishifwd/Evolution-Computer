@@ -42,7 +42,7 @@ POP = 50
 #CO_R = st.slider('Crossover Rate', 0.0, 0.95, 0.8, 0.01)
 #MUT_R = st.slider('Mutation Rate', 0.01, 0.05, 0.2, 0.01)
 CO_R = st.number_input('Crossover Rate', min_value=0.0, max_value=0.95, value=0.8, step=0.01)
-MUT_R = st.number_input('Mutation Rate', min_value=0.01, max_value=0.05, value=0.2, step=0.01)
+MUT_R = st.number_input('Mutation Rate', min_value=0.01, max_value=0.2, value=0.2, step=0.01)
 EL_S = 2
 
 all_programs = list(ratings.keys()) # all programs
