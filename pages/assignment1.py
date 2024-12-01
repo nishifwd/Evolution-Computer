@@ -156,9 +156,9 @@ st.write("### Final Optimal Schedule")
 schedule_data = []
 
 for time_slot, program in enumerate(final_schedule):
-    schedule_data.append(["{all_time_slots[time_slot]:02d}:00", program, fitness_function([program])])
+    schedule_data.append([f"time{all_time_slots[time_slot]:02d}:00", "program" program, fitness_function([program])])
 
 st.table(schedule_data)
 
 # Total Ratings of the Schedule
-st.write("Total Ratings: {fitness_function(final_schedule)}")
+st.write(f"Total Ratings: {fitness_function(final_schedule)}")
