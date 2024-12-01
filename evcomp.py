@@ -1,21 +1,24 @@
 import streamlit as st
+import random
+import time
+
 st.set_page_config(
     page_title="Genetic Algorithm"
 )
 
 st.header("Genetic Algorithm", divider="gray")
 
-import random
-
 #POP_SIZE: Number of Chromosomes in our list.
 POP_SIZE = 500
+#POP_SIZE = st.number_input("Enter population size")
 
 #MUT_RATE: Rate at which our string will be changed.
-MUT_RATE = st.number_input("Enter your mutation", min_value=0.0, max_value=1.0, value=0.0, step=0.01)
+#MUT_RATE = 0.2
 
 #TARGET: Our goal.
-TARGET = 'danish'
-TARGET = st.text_input("Enter your name",'danish')
+#TARGET = 'fakhitah'
+    
+
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyz'
 
@@ -43,14 +46,14 @@ def fitness_cal(TARGET, chromo_from_pop):
           difference+=1
   return [chromo_from_pop, difference]
 
-    #selection
+#selection
 #returns top 50% population sorted according to fitness
 
 def selection(population, TARGET):
   sorted_chromo_pop = sorted(population, key= lambda x: x[1])
   return sorted_chromo_pop[:int(0.5*POP_SIZE)]
 
-    #crossover
+#crossover
 
 def crossover(selected_chromo, CHROMO_LEN, population):
   offspring_cross = []
@@ -66,7 +69,7 @@ def crossover(selected_chromo, CHROMO_LEN, population):
     offspring_cross.extend([child])
   return offspring_cross
 
-    #mutation
+#mutation
 
 def mutate(offspring, MUT_RATE):
   mutated_offspring = []
@@ -78,7 +81,7 @@ def mutate(offspring, MUT_RATE):
       mutated_offspring.append(arr)
   return mutated_offspring
 
-    #replacement
+#replacement
 
 def replace(new_gen, population):
   for _ in range(len(population)):
@@ -87,7 +90,7 @@ def replace(new_gen, population):
         population[_][1] = new_gen[_][1]
   return population
 
-    #main
+#main
 
 def main(POP_SIZE, MUT_RATE, TARGET, GENES):
     # 1) initialize population
@@ -130,7 +133,14 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
         break
       st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
       generation+=1
+        
+with st.form("my_form"):
+    TARGET = st.text_input("Enter your name")
+    MUT_RATE = st.number_input("Enter your mutation rate")
 
-if st.button("Calculate"):
-    main(POP_SIZE, MUT_RATE, TARGET, GENES)
+    calculate = st.form_submit_button("Calculate")
+
+    if calculate:
+        main(POP_SIZE, MUT_RATE, TARGET, GENES)
+
 
