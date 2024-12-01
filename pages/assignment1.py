@@ -154,6 +154,6 @@ final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 schedule_data = []
 st.title("\nFinal Optimal Schedule:")
 for time_slot, program in enumerate(final_schedule):
-    schedule_data.append(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
+    schedule_data.append(["{all_time_slots[time_slot]:02d}:00", program, ratings[program][time_slot]])
 st.table(schedule_data)
-st.text("Total Ratings:", fitness_function(final_schedule))
+st.text("Total Ratings: {fitness_function(final_schedule)}")
