@@ -51,18 +51,9 @@ n_generations = 200
 colors = sns.color_palette("pastel", len(cities_names))
 
 # City Icons
-city_icons = {
-    cities_names[0]: "♕",
-    cities_names[1]: "♖",
-    cities_names[2]: "♗",
-    cities_names[3]: "♘",
-    cities_names[4]: "♙",
-    cities_names[5]: "♔",
-    cities_names[6]: "♚",
-    cities_names[7]: "♛",
-    cities_names[8]: "♜",
-    cities_names[9]: "♝"
-}
+# Dynamically assign city icons based on input
+icon_set = ["♕", "♖", "♗", "♘", "♙", "♔", "♚", "♛", "♜", "♝"]
+city_icons = {city: icon_set[i] for i, city in enumerate(cities_names)}
 
 fig, ax = plt.subplots()
 
