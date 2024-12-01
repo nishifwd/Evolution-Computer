@@ -157,7 +157,7 @@ schedule_data = []
 schedule_data.append(["Time", "Program"])
 
 for time_slot, program:
-    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", {program[final_schedule]}])
+    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", {final_schedule[program]}])
 
 st.table(schedule_data)
 
