@@ -37,11 +37,11 @@ CO_R = st.slider('Crossover Rate', 0.0, 0.95, 0.8, 0.01)
 MUT_R = st.slider('Mutation Rate', 0.01, 0.05, 0.2, 0.01)
 
 # Number of generations and population size (optional if you want to adjust them)
-GEN = st.slider('Number of Generations', 10, 500, 100)
-POP = st.slider('Population Size', 10, 200, 50)
+GEN = 100
+POP = 50
 
 # Elitism size (number of best solutions to carry forward)
-EL_S = st.slider('Elitism Size', 1, 10, 2)
+EL_S = 2
 
 # Define the available programs and time slots
 all_programs = list(ratings.keys())  # all programs
