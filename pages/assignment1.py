@@ -151,9 +151,9 @@ rem_t_slots = len(all_time_slots) - len(initial_best_schedule)
 genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, population_size=POP, elitism_size=EL_S)
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
-
+schedule_data = []
 st.title("\nFinal Optimal Schedule:")
 for time_slot, program in enumerate(final_schedule):
-    st.table(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
-
+    schedule_data.append(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
+st.table(schedule_data)
 st.text("Total Ratings:", fitness_function(final_schedule))
