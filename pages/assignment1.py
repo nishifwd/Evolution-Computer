@@ -154,12 +154,15 @@ final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 # Display the final schedule
 st.write("### Final Optimal Schedule")
 schedule_data = []
-schedule_data.append(["Time", "Program"])
+schedule_data.append(["Time", "Program"])  # Add column headers
 
-for time_slot, program:
-    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", {final_schedule[program]}])
+# Iterate over the final_schedule and construct the rows for the table
+for time_slot, program in enumerate(final_schedule):
+    schedule_data.append([f"{all_time_slots[time_slot]:02d}:00", program])
 
+# Display the table
 st.table(schedule_data)
 
 # Total Ratings of the Schedule
 st.write(f"Total Ratings: {fitness_function(final_schedule)}")
+
