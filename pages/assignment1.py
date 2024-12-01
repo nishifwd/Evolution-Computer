@@ -152,7 +152,7 @@ genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, pop
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 # Display the final schedule
-st.write("### Final Optimal Schedule")
+st.subheader("Final Optimal Schedule")
 schedule_data = {
     "Time Slot": [f"{time_slot}:00" for time_slot in all_time_slots],
     "Program": final_schedule,
