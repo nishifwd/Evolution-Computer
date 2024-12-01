@@ -39,24 +39,8 @@ st.title('Genetic Algorithm for Program Scheduling')
 
 GEN = 100
 POP = 50
-# CO_R = st.slider('Crossover Rate', 0.0, 0.95, 0.8, 0.01)
-# MUT_R = st.slider('Mutation Rate', 0.01, 0.05, 0.2, 0.01)
-CO_R = st.text_input('Crossover Rate', '0.8')
-try:
-    CO_R = float(st.text_input('Crossover Rate', '0.8'))
-    if not 0.0 <= CO_R <= 0.95:
-        raise ValueError("Value must be between 0.0 and 0.95")
-except ValueError as e:
-    st.error(f"Invalid input for Crossover Rate: {e}")
-
-MUT_R = st.text_input('Mutation Rate', '0.2') 
-try:
-    MUT_R = float(st.text_input('Mutation Rate', '0.2'))
-    if not 0.01 <= MUT_R <= 0.05:
-        raise ValueError("Value must be between 0.01 and 0.05")
-except ValueError as e:
-    st.error(f"Invalid input for Mutation Rate: {e}")
-    
+CO_R = st.slider('Crossover Rate', 0.0, 0.95, 0.8, 0.01)
+MUT_R = st.slider('Mutation Rate', 0.01, 0.05, 0.2, 0.01)
 EL_S = 2
 
 all_programs = list(ratings.keys()) # all programs
