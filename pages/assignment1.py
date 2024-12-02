@@ -35,7 +35,7 @@ for program, ratings in program_ratings_dict.items():
 
 ratings = program_ratings_dict
 
-st.title('Genetic Algorithm for Program Scheduling')
+st.title('TV Scheduling - Genetic Algorithm')
 
 GEN = 100
 POP = 50
