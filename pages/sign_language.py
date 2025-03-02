@@ -14,6 +14,13 @@ def load_and_preprocess_image(image_path, target_size=(32, 32)):  # Resize to ma
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
     return img_array
 
+# Define the label_dict (mapping integer to class label)
+label_dict = {
+    0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J',
+    10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S', 19: 'T',
+    20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y'
+}
+
 # Streamlit app for user to upload an image
 st.title('Hand Sign Language Recognition')
 
@@ -33,7 +40,7 @@ if uploaded_file is not None:
     predicted_class_index = np.argmax(prediction, axis=1)[0]
 
     # Get the class label (you should have your class labels from label_dict)
-    class_labels = list(label_dict.keys())  # Ensure label_dict contains your class labels
+    class_labels = list(label_dict.values())  # Get class labels from the dictionary
     predicted_class_label = class_labels[predicted_class_index]
 
     st.write(f'Predicted Class: {predicted_class_label}')
