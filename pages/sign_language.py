@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 # Load the pre-trained model (after saving in the notebook)
-model = tf.keras.models.load_model('hand_sign_language_model.h5')
+model = tf.keras.models.load_model('content/hand_sign_language_model.h5')
 
 # Streamlit app for user to upload an image
 st.title('Hand Sign Language Recognition')
