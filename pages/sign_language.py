@@ -47,8 +47,13 @@ if uploaded_file is not None:
 
     # Show prediction probabilities as a bar chart
     st.subheader("📊 Prediction Confidence")
+
+    # Convert label_dict keys to a sorted list of class labels
+    sorted_labels = [label_dict[i] for i in range(len(label_dict))]
+    
+    # Plot prediction probabilities
     fig, ax = plt.subplots()
-    ax.bar(label_dict.values(), prediction[0])
+    ax.bar(sorted_labels, prediction[0])
     ax.set_xlabel("Class Labels")
     ax.set_ylabel("Confidence")
     plt.xticks(rotation=90)
