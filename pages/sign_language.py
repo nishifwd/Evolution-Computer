@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+import matplotlib.pyplot as plt
 
 # Load the trained model
 model = tf.keras.models.load_model("content/sign_language_cnn.h5")
@@ -23,21 +24,35 @@ def preprocess_image(image):
     img_array = np.expand_dims(img_array, axis=-1)  # Add channel dimension (28, 28, 1)
     return img_array
 
+# Streamlit app
 st.title("🖐️ Hand Sign Language Recognition")
 
+# Upload image
 uploaded_file = st.file_uploader("📤 Upload an image...", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
+    
+    # Display the uploaded image
     st.image(image, caption="📸 Uploaded Image", use_container_width=True) 
     
+    # Preprocess and make prediction
     img_array = preprocess_image(image)
-    
     prediction = model.predict(img_array)
     predicted_class_index = np.argmax(prediction, axis=1)[0]
     predicted_label = label_dict.get(predicted_class_index, "Unknown")
-
+    
+    # Display results
     st.subheader(f"🔍 **Predicted Sign:** {predicted_label}")
 
-    # Debugging: Show raw prediction probabilities
-    st.write("📊 **Prediction Probabilities:**", prediction.tolist())
+    # Show prediction probabilities as a bar chart
+    st.subheader("📊 Prediction Confidence")
+    fig, ax = plt.subplots()
+    ax.bar(label_dict.values(), prediction[0])
+    ax.set_xlabel("Class Labels")
+    ax.set_ylabel("Confidence")
+    plt.xticks(rotation=90)
+    st.pyplot(fig)
+
+else:
+    st.warning("Please upload an image file.")
