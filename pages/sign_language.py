@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Load the trained model
-model = tf.keras.models.load_model("hand_sign_language_model.keras")
+model = tf.keras.models.load_model("content/hand_sign_language_model.keras")
 
 # Define class labels
 label_dict = {i: label for i, label in enumerate(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 
