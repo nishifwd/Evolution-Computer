@@ -13,15 +13,10 @@ label_dict = {i: label for i, label in enumerate(['A', 'B', 'C', 'D', 'E', 'F', 
                                                   'T', 'U', 'V', 'W', 'X', 'Y'])}
 
 def preprocess_image(image):
-    """
-    Preprocesses the uploaded image to match the model's training format.
-    Converts to grayscale, resizes to 28x28, normalizes pixel values.
-    """
-    img = image.convert("L")  # Convert to grayscale
-    img = img.resize((28, 28))  # Resize to match training size
+    img = image.convert("RGB")  # Convert to RGB (3 channels)
+    img = img.resize((32, 32))  # Resize to match CNN input size
     img_array = np.array(img) / 255.0  # Normalize pixel values
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
-    img_array = np.expand_dims(img_array, axis=-1)  # Add channel dimension (28, 28, 1)
     return img_array
 
 # Streamlit app
@@ -39,7 +34,7 @@ if uploaded_file is not None:
     # Preprocess and make prediction
     img_array = preprocess_image(image)
     prediction = model.predict(img_array)
-    predicted_class_index = np.argmax(prediction, axis=1)[0]
+    predicted_class_index = np.argmax(prediction[0])
     predicted_label = label_dict.get(predicted_class_index, "Unknown")
     
     # Display results
