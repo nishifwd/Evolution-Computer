@@ -1,5 +1,5 @@
 # Set page config
-st.set_page_config(page_title="Nur Fatihah Amani's Portfolio", page_icon="🎨", layout="wide")
+st.set_page_config(page_title="Muhamad Danish's Portfolio", layout="wide")
 
 # Custom CSS for styling
 st.markdown("""
