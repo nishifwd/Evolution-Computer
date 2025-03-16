@@ -13,9 +13,12 @@ label_dict = {i: label for i, label in enumerate(['A', 'B', 'C', 'D', 'E', 'F', 
                                                   'T', 'U', 'V', 'W', 'X', 'Y'])}
 
 def preprocess_image(image):
-    img = image.convert("RGB")  # Convert to RGB (3 channels)
-    img = img.resize((32, 32))  # Resize to match CNN input size
-    img_array = np.array(img) / 255.0  # Normalize pixel values
+    """Ensure identical preprocessing as in Colab."""
+    if image.mode != "RGB":
+        image = image.convert("RGB")  # Convert only if necessary
+    img = image.resize((32, 32))  # Resize to match CNN input size
+    img_array = image.img_to_array(img)  # Use Keras method
+    img_array = img_array / 255.0  # Normalize
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
     return img_array
 
