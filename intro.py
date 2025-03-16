@@ -1,27 +1,53 @@
-st.set_page_config(page_title='Welcome to EcoWatch', page_icon='🌊', layout='centered')
+# Set page config
+st.set_page_config(page_title="Nur Fatihah Amani's Portfolio", page_icon="🎨", layout="wide")
 
-# Main title
-st.title('🌍 Welcome to EcoWatch')
+# Custom CSS for styling
+st.markdown("""
+    <style>
+        .main-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 20px;
+        }
+        .project-box {
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f4f4f4;
+            margin: 10px 0px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-# Introduction text
-st.markdown(
-    """
-    **EcoWatch** is a smart water monitoring system that detects and classifies water pollution 
-    using machine learning. Our goal is to provide real-time insights to ensure cleaner and safer water sources.
-    
-    🌱 **Key Features:**
-    - 📊 Real-time water quality monitoring
-    - 🤖 Machine learning-based pollution classification
-    - 📍 Interactive data visualization
-    - 🔔 Smart alerts for potential contamination
-    
-    """
-)
+# Header
+st.markdown("<h1 class='main-title'>👋 Welcome to My Portfolio</h1>", unsafe_allow_html=True)
+st.markdown("<h3 class='subtitle'>Hi, I'm Nur Fatihah Amani! Explore my projects below.</h3>", unsafe_allow_html=True)
 
-# Sidebar navigation
-st.sidebar.title('Navigation')
-st.sidebar.markdown("Select a page to explore different features.")
+# Introduction
+st.write("""
+I am passionate about software development, AI, and data science. Below, you'll find some of the projects I've developed using Streamlit.
+""")
+
+# List of projects
+projects = [
+    {"title": "Mental Ease - Mental Health Tracking App", "description": "A mental health app for students to track their mood and well-being."},
+    {"title": "EcoWatch - Water Quality Monitoring", "description": "A machine learning-based system for water pollution detection."},
+    {"title": "Flight Route Optimization", "description": "An AI-driven project optimizing flight routes using evolutionary strategies."},
+    {"title": "AI Chatbot", "description": "An LLM-powered chatbot for answering user queries."}
+]
+
+# Display projects
+for project in projects:
+    st.markdown(f"""
+        <div class='project-box'>
+            <h4>{project['title']}</h4>
+            <p>{project['description']}</p>
+        </div>
+    """, unsafe_allow_html=True)
 
 # Footer
-st.markdown("---")
-st.markdown("💙 Developed by Nur Fatihah Amani & Smartlink Innovation")
+st.write("---")
+st.write("Feel free to connect with me on LinkedIn or GitHub!")
