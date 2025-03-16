@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
 
 # Load the trained model
@@ -12,16 +13,13 @@ label_dict = {i: label for i, label in enumerate(['A', 'B', 'C', 'D', 'E', 'F', 
                                                   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 
                                                   'T', 'U', 'V', 'W', 'X', 'Y'])}
 
-def preprocess_image(image):
-    """Ensure identical preprocessing as in Colab."""
-    if image.mode != "RGB":
-        image = image.convert("RGB")  # Convert only if necessary
-    img = image.resize((32, 32))  # Resize to match CNN input size
-    img_array = image.img_to_array(img)  # Use Keras method
+def load_and_preprocess_image(image_path, target_size=(32, 32)):  # Match training input shape
+    img = Image.open(image_path).resize(target_size)  # Opens and resizes image using PIL
+    img_array = image.img_to_array(img)  # Convert to array
     img_array = img_array / 255.0  # Normalize
     img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
     return img_array
-
+  
 # Streamlit app
 st.title("🖐️ Hand Sign Language Recognition")
 
@@ -35,7 +33,7 @@ if uploaded_file is not None:
     st.image(image, caption="📸 Uploaded Image", use_container_width=True) 
     
     # Preprocess and make prediction
-    img_array = preprocess_image(image)
+    img_array = load_and_preprocess_image(uploaded_file)  # Corrected function name
     prediction = model.predict(img_array)
     predicted_class_index = np.argmax(prediction[0])
     predicted_label = label_dict.get(predicted_class_index, "Unknown")
